@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>XConsole</RootNamespace>
+    <TargetFramework>net8.0</TargetFramework>
+    <Configurations>Debug;Release</Configurations>
+    <UserSecretsId>b666be48-d93f-4e21-99e3-a0971e12c45f</UserSecretsId>
+  </PropertyGroup>
+
+</Project>
