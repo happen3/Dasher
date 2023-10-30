@@ -1,4 +1,14 @@
 ﻿Module DefinedCommands
+
+#If NET5_0_OR_GREATER Then
+    Public EEgg = True
+#Else
+    Public EEgg = False
+#End If
+
+
+    ' This defines all the mainstream commands '
+
     Sub CommandRunner(UserInputArgs As Array)
         Select Case UserInputArgs(0).ToLower()
             Case "exit"
@@ -47,6 +57,10 @@
                 CommandWho(UserInputArgs)
             Case "ifequal"
                 CommandCompare(UserInputArgs)
+            Case "light"
+                CommandLight(UserInputArgs)
+            Case "show"
+                CommandShow(UserInputArgs)
             Case Else
                 Console.WriteLine("dahser: " + UserInputArgs(0) + " is not a command")
         End Select

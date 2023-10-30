@@ -224,6 +224,7 @@ Module Commands
             Console.WriteLine("  who - Shows your username.")
             Console.WriteLine("  cname <name> - Sets the console title.")
             Console.WriteLine("  ifequal <left> <right> - Compares if left and right are equal or not.")
+            Console.WriteLine("  light <filepath> - Creates an empty file with a certain file path.")
             Console.WriteLine("  == EXTENSIONS == ")
             For Each Axt As String In Axtensions.Keys
                 Dim Desc As Object = Axtensions(Axt)
@@ -231,6 +232,34 @@ Module Commands
             Next
         Else
             Console.WriteLine(args(0) & ": Argument use disallowed")
+        End If
+    End Sub
+
+    Sub CommandLight(args As Array)
+        If args.Length = 2 Then ' Check the number of arguments (excluding the input)
+            Dim fileName As String = Replace(args(1), ChrW(34), "") ' Remove quotes
+            Try
+                IO.File.Create(fileName)
+                Console.WriteLine("light: Created file " & fileName)
+            Catch ex As Exception
+                ThrowErrorLog("light", "Error creating file " & fileName & ": " & ex.Message)
+            End Try
+        Else
+            Console.WriteLine(args(0) & ": Expected one argument fileName") ' Throw an argument
+        End If
+    End Sub
+
+    Sub CommandShow(args As Array)
+        If args.Length = 2 Then ' Check the number of arguments (excluding the input)
+            Dim fileName As String = Replace(args(1), ChrW(34), "") ' Remove quotes
+            Try
+                Dim fc = IO.File.ReadAllText(fileName)
+                Console.WriteLine(fc)
+            Catch ex As Exception
+                ThrowErrorLog("show", "Error opening file " & fileName & ": " & ex.Message)
+            End Try
+        Else
+            Console.WriteLine(args(0) & ": Expected one argument fileName") ' Throw an argument
         End If
     End Sub
 
